@@ -22,6 +22,11 @@
                 background-attachment: fixed;
 
             }
+            .Convocatorias{
+                display: flex;
+                justify-content: space-between;
+                text-align: center;
+            }
             .container {
                 display: flex;
                 justify-content: space-between;
@@ -93,7 +98,6 @@
     <body>
 
         <br>
-        <br>
         <div class="Cinta">
             <div class="DesplegarInicioSesion">                
                 <a href="javascript:void(0)"> Iniciar Sesion ▼</a>
@@ -105,12 +109,31 @@
             </div>
             <a href="PerfilAdministrador/Registrar.jsp" style="color: #ffffff; font-weight: bolder;"> Registrarse </a>
         </div>
+        <br>
+        <div style="background-color: aliceblue; padding: 20px; border-radius: 8px;">
+            <div class="Convocatorias">
+                <div class="Contenido1">
+                    <h2> Carrera Disponible </h2>
+                    <p> info </p>
+                    <p> Presentar Prueba </p>
+                </div>
+                <div class="Contenido2">
+                    <h2> Curso Disponible </h2>
+                    <p> info </p>
+                    <p> Presentar Prueba </p>
+                </div>
+                <div class="Contenido3">
+                    <h2> Carrera Disponible </h2>
+                    <p> info </p>
+                    <p> Presentar Prueba </p>
 
+                </div>
+            </div>
+        </div>
 
         <br><br>
-
         <div style="background-color: #ffd500; padding: 20px;">
-            <div class="SobreNos">
+            <div class="Sobre">
                 <h1 style="font-size: 35px; color: #ffffff; text-align: center; font-weight: bolder"> 
                     <b>Bienvenidos a la Universidad Nueva Granada</b>
                 </h1>

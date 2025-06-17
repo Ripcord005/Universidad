@@ -12,33 +12,17 @@
         <title>Login - Estudiantes</title>
         <style>
 
-            /*            body {
-                            margin: 0;
-                            padding: 0;
-                            height: 100vh;
-                            font-family: 'Segoe UI', sans-serif;
-                            background-size: cover;
-                            background-position: center;
-                            background-repeat: no-repeat;
-                            animation: cambioFondo 50s infinite;
-                        }
-            
-                        @keyframes cambioFondo{
-            
-                            0% {
-                                background-image: url("../Image/15042025-Carreras-mas-buscadas.jpg");
-                            }
-                            33% {
-                                background-image: url("../Image/promocion-estudiante.jpg");
-                            }
-                            66% {
-                                background-image: url("../Image/universidad_nacional_de_colombia.jpg");
-                            }
-                            100% {
-                                background-image: url("../Image/favicon.ico");
-                            }
-                        }
-            */
+            * {
+                box-sizing: border-box;
+            }
+
+            html, body {
+                margin: 0;
+                padding: 0;
+                height: 100%;
+                font-family: 'Segoe UI', sans-serif;
+            }
+
             body {
                 margin: 0;
                 padding: 0;
@@ -47,7 +31,7 @@
                 background-size: cover;
                 background-position: center;
                 background-repeat: no-repeat;
-                animation: cambioFondo 30s infinite;
+                animation: cambioFondo 20s infinite;
                 display: flex;
                 justify-content: center;
                 align-items: center;
@@ -55,50 +39,55 @@
 
             @keyframes cambioFondo {
                 0%   {
-                    background-image: url('../Image/fondo1.jpg');
+                    background-image: url('../Image/15042025-Carreras-mas-buscadas.jpg');
                 }
                 33%  {
-                    background-image: url('../Image/fondo2.jpg');
+                    background-image: url('../Image/Foto-principal-Colombia.jpg');
                 }
                 66%  {
-                    background-image: url('../Image/fondo3.jpg');
+                    background-image: url('../Image/promocion-estudiante.jpg');
                 }
                 100% {
-                    background-image: url('../Image/fondo1.jpg');
+                    background-image: url('../Image/15042025-Carreras-mas-buscadas.jpg');
                 }
             }
 
             .login-container {
                 background-color: rgba(255, 255, 255, 0.85);
-                padding: 30px;
-                border-radius: 10px;
-                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+                padding: 60px 50px;
+                border-radius: 20px;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
                 width: 100%;
-                max-width: 320px;
+                max-width: 500px;
                 text-align: center;
+                transition: transform 0.3s ease;
+                font-size: 18px;
             }
 
             h2 {
-                margin-bottom: 20px;
-                font-weight: 500;
+                margin-bottom: 30px;
+                font-weight: 600;
+                font-size: 32px;
                 color: #003366;
             }
 
             input[type="text"],
             input[type="password"] {
                 width: 100%;
-                padding: 10px;
-                margin-bottom: 15px;
+                padding: 12px;
+                margin-bottom: 20px;
                 border: 1px solid #ccc;
-                border-radius: 5px;
+                border-radius: 25px;
                 font-size: 14px;
                 outline: none;
-                transition: border 0.2s ease;
+                transition: border 0.3s, box-shadow 0.3s;
+                box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
             }
 
             input[type="text"]:focus,
             input[type="password"]:focus {
                 border-color: #004080;
+                box-shadow: 0 0 6px rgba(0, 64, 128, 0.4);
             }
 
             button {
@@ -110,11 +99,15 @@
                 width: 100%;
                 font-size: 15px;
                 cursor: pointer;
-                transition: background-color 0.3s ease;
+                transition: background-color 0.3s ease,  transform 0.2s ease;
+                box-shadow: 0 4px 12px rgba(0, 64, 128, 0.2);
+                margin-top: 10px;
+                margin-bottom: 10px;
             }
 
             button:hover {
                 background-color: #0059b3;
+                transform: translateY(-2px);
             }
 
         </style>

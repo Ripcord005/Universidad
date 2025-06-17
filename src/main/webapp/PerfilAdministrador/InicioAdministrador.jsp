@@ -78,10 +78,9 @@
     <!-- Barra de navegación -->
     <div class="navbar">
         <div class="menu">
-            <a href="dashboard.jsp">Dashboard</a>
-            <a href="usuarios.jsp">Usuarios</a>
+            <a href="Registrar.jsp">Registrar Nuevo</a>
+            <a href="usuarios.jsp">Ver Usuarios</a>
             <a href="reportes.jsp">Reportes</a>
-            <a href="configuracion.jsp">Configuración</a>
             <a href="../Inicio.jsp">Log Out</a>
         </div>
         <!-- Perfil del administrador (nombre y foto) -->

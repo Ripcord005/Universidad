@@ -178,19 +178,25 @@
             <div class="offers-container">
                 <div class="offer">
                     <h2>Carrera Disponible</h2>
-                    <p>info</p>
-                    <p>Presentar Prueba</p>
+                    <br>
+                    <p>info...</p>
+                    <br>
+                    <a href="PruebaAdminicion.jsp" style="text-decoration: none; color: inherit; font-weight: bold;">Presentar Prueba</a>
                 </div>
                 <div class="offer">
                     <h2>Curso Disponible</h2>
-                    <p>info</p>
+                    <br>
+                    <p>info...</p>
+                    <br>
                     <a href="PruebaAdminicion.jsp" style="text-decoration: none; color: inherit; font-weight: bold;">Presentar Prueba</a>
                 </div>
 
                 <div class="offer">
                     <h2>Carrera Disponible</h2>
-                    <p>info</p>
-                    <p>Presentar Prueba</p>
+                    <br>
+                    <p>info...</p>
+                    <br>
+                    <a href="PruebaAdminicion.jsp" style="text-decoration: none; color: inherit; font-weight: bold;">Presentar Prueba</a>
                 </div>
             </div>
         </div>

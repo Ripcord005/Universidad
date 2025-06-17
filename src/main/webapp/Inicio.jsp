@@ -167,7 +167,6 @@
                     <a href="Login/Login.Administrador.jsp">Administrativos</a>
                 </div>
             </div>
-            <a href="PerfilAdministrador/Registrar.jsp">Registrarse</a>
         </div>
 
         <!-- Sección de Ofertas -->

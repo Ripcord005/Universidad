@@ -2,6 +2,9 @@ package com.UniversidadNuevaGranada.DAO;
 
 import com.UniversidadNuevaGranada.Bean.Usuario;
 import java.sql.*;
+import java.util.AbstractList;
+import java.util.ArrayList;
+import java.util.List;
 
 public class UsuarioDAO {
 
@@ -10,15 +13,27 @@ public class UsuarioDAO {
     private String jdbcPassword = "123456789";
 
     private static final String INSERT_USUARIO_SQL = "INSERT INTO \"Usuario\" ( \"Nombre\", \"TipoDocumento\", \"NumeroDocumento\", \"Genero\", \"GrupoSanguineo\", \"Correo\", \"Rol\") VALUES (?, ?, ?, ?, ?, ?, ?)";
+    private static final String SELECT_USUARIO_SQL = "SELECT ( \"Nombre\", \"TipoDocumento\", \"NumeroDocumento\", \"Genero\", \"GrupoSanguineo\", \"Correo\", \"Rol\") FROM \"Usuario\"";
 
+    
+    protected Connection getConnection() throws SQLException {
+        Connection connection = null;
+        try {
+            Class.forName("org.postgresql.Driver");
+            connection = DriverManager.getConnection(jdbcURL, jdbcUsername, jdbcPassword);
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        return connection;
+    }
+ 
     public boolean registrarUsuario(Usuario usuario) {
         boolean registroExitoso = false;
 
         try {
-            // Cargar el driver
-            Class.forName("org.postgresql.Driver");
-
-            try (Connection connection = DriverManager.getConnection(jdbcURL, jdbcUsername, jdbcPassword); PreparedStatement stmt = connection.prepareStatement(INSERT_USUARIO_SQL)) {
+          
+            try (Connection connection = getConnection(); 
+            PreparedStatement stmt = connection.prepareStatement(INSERT_USUARIO_SQL)) {
 
                 stmt.setString(1, usuario.getNombre());
                 stmt.setString(2, usuario.getTipoDocumento());
@@ -37,4 +52,30 @@ public class UsuarioDAO {
 
         return registroExitoso;
     }
+
+    public List<Usuario> ObtenerUsuarios() throws SQLException {
+        List<Usuario> Lista = new ArrayList<>();
+
+        try (Connection connection = getConnection();
+                PreparedStatement ps = connection.prepareStatement(SELECT_USUARIO_SQL); 
+                ResultSet rs = ps.executeQuery()) {
+
+            while (rs.next()) {
+                Usuario usuario = new Usuario();
+                usuario.setNombre(rs.getString("Nombre"));
+                usuario.setTipoDocumento(rs.getString("TipoDocumento"));
+                usuario.setNumeroDocumento(String.valueOf(rs.getInt("NumeroDocumento")));
+                usuario.setGenero(rs.getString("Genero"));
+                usuario.setGrupoSanguineo(rs.getString("GrupoSanguineo"));
+                usuario.setCorreo(rs.getString("Correo"));
+                usuario.setRol(rs.getString("Rol"));
+                Lista.add(usuario);
+            }
+
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+        return Lista;
+    }
+
 }

@@ -12,7 +12,39 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Usuarios Registrados</title>
+        <style>
+            body{
+                font-family: Arial, sans-serif;
+                background-color: #f2f2f2;
+                margin: 20px;
+            }
+            h1{
+                text-align: center;
+                color: #004080;
+                
+            }
+            table{
+                border-collapse: collapse;
+                width: 90%;
+                margin: auto;
+                background-color: #f
+                    fffff;
+                box-shadow: 0 0 5px rgba(0,0,0,0,2);
+            }
+            th , td{
+                border: 1px solid #ddd;
+                padding: 10px;
+                text-align: center;
+            }
+            th{
+                background-color: #d62828;
+                color: #fff;
+            }
+            tr:nth-child(even){
+                background-color: #f9f9f;
+            }
+        </style>
     </head>
     <body>
         <h1> Usuarios </h1>
@@ -32,7 +64,7 @@
          if(ListaUsuarios != null && !ListaUsuarios.isEmpty()){
          for(Usuario usuario : ListaUsuarios){
             %>
-            
+
             <tr>
                 <td><%= usuario.getNombre()%></td>
                 <td><%= usuario.getTipoDocumento()%></td>
@@ -42,7 +74,7 @@
                 <td><%= usuario.getCorreo()%></td>
                 <td><%= usuario.getRol()%></td>
             </tr>
-            
+
             <%
                 }
 }else{

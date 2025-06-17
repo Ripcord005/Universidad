@@ -28,7 +28,14 @@
             margin: 0;
             font-family: Arial, sans-serif;
             background-color: #f2f2f2;
+               background-image: url("Image/Foto-principal-Colombia.jpg");
+                background-repeat: no-repeat;
+                background-size: cover;
+                background-position: center;
+                background-attachment: fixed;
         }
+        
+        
         
         /* Barra de navegación principal */
         .navbar {

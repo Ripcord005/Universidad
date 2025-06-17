@@ -2,7 +2,6 @@ package com.UniversidadNuevaGranada.DAO;
 
 import com.UniversidadNuevaGranada.Bean.Usuario;
 import java.sql.*;
-import java.util.AbstractList;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -52,7 +51,7 @@ private static final String SELECT_USUARIO_SQL = "SELECT \"Nombre\", \"TipoDocum
         return registroExitoso;
     }
 
-    public List<Usuario> ObtenerUsuarios() throws SQLException {
+    public List<Usuario> ObtenerUsuarios() {
         List<Usuario> Lista = new ArrayList<>();
 
         try (Connection connection = getConnection();

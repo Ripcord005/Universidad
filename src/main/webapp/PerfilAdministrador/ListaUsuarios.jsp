@@ -5,6 +5,9 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import= "java.util.List"%>
+<%@page import= "com.UniversidadNuevaGranada.Bean.Usuario"%>
+<%@page import= "com.UniversidadNuevaGranada.DAO.UsuarioDAO"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -23,7 +26,33 @@
                 <th>Correo</th>
                 <th>Rol</th>
             </tr>
+            <% 
+         UsuarioDAO usuarioDAO = new UsuarioDAO();
+         List<Usuario> ListaUsuarios = usuarioDAO.ObtenerUsuarios();
+         if(ListaUsuarios != null && !ListaUsuarios.isEmpty()){
+         for(Usuario usuario : ListaUsuarios){
+            %>
             
+            <tr>
+                <td><%= usuario.getNombre()%></td>
+                <td><%= usuario.getTipoDocumento()%></td>
+                <td><%= usuario.getNumeroDocumento()%></td>
+                <td><%= usuario.getGenero()%></td>
+                <td><%= usuario.getGrupoSanguineo()%></td>
+                <td><%= usuario.getCorreo()%></td>
+                <td><%= usuario.getRol()%></td>
+            </tr>
+            
+            <%
+                }
+}else{
+            %>
+            <tr>
+                <td colspan="9"> No se encontraron usuarios registrados </td>
+            </tr>
+            <%
+                }
+            %>
         </table>
     </body>
 </html>

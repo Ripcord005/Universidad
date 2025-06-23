@@ -12,8 +12,9 @@ public class UsuarioDAO {
     private String jdbcPassword = "123456789";
 
     private static final String INSERT_USUARIO_SQL = "INSERT INTO \"Usuario\" ( \"Nombre\", \"TipoDocumento\", \"NumeroDocumento\", \"Genero\", \"GrupoSanguineo\", \"Correo\", \"Rol\") VALUES (?, ?, ?, ?, ?, ?, ?)";
-private static final String SELECT_USUARIO_SQL = "SELECT \"Nombre\", \"TipoDocumento\", \"NumeroDocumento\", \"Genero\", \"GrupoSanguineo\", \"Correo\", \"Rol\" FROM \"Usuario\"";
-    
+    private static final String SELECT_USUARIO_SQL = "SELECT \"Nombre\", \"TipoDocumento\", \"NumeroDocumento\", \"Genero\", \"GrupoSanguineo\", \"Correo\", \"Rol\" FROM \"Usuario\"";
+    private static final String SELECT_NumDoc = "SELECT * FROM \"Usuario\" WHERE \"NumeroDocumento\" = ?";
+
     protected Connection getConnection() throws SQLException {
         Connection connection = null;
         try {
@@ -24,14 +25,13 @@ private static final String SELECT_USUARIO_SQL = "SELECT \"Nombre\", \"TipoDocum
         }
         return connection;
     }
- 
+
     public boolean registrarUsuario(Usuario usuario) {
         boolean registroExitoso = false;
 
         try {
-          
-            try (Connection connection = getConnection(); 
-            PreparedStatement stmt = connection.prepareStatement(INSERT_USUARIO_SQL)) {
+
+            try (Connection connection = getConnection(); PreparedStatement stmt = connection.prepareStatement(INSERT_USUARIO_SQL)) {
 
                 stmt.setString(1, usuario.getNombre());
                 stmt.setString(2, usuario.getTipoDocumento());
@@ -54,9 +54,7 @@ private static final String SELECT_USUARIO_SQL = "SELECT \"Nombre\", \"TipoDocum
     public List<Usuario> ObtenerUsuarios() {
         List<Usuario> Lista = new ArrayList<>();
 
-        try (Connection connection = getConnection();
-                PreparedStatement ps = connection.prepareStatement(SELECT_USUARIO_SQL); 
-                ResultSet rs = ps.executeQuery()) {
+        try (Connection connection = getConnection(); PreparedStatement ps = connection.prepareStatement(SELECT_USUARIO_SQL); ResultSet rs = ps.executeQuery()) {
 
             while (rs.next()) {
                 Usuario usuario = new Usuario();
@@ -70,7 +68,7 @@ private static final String SELECT_USUARIO_SQL = "SELECT \"Nombre\", \"TipoDocum
                 Lista.add(usuario);
             }
 
-        }catch(SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return Lista;

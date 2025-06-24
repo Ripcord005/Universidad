@@ -13,7 +13,6 @@ public class UsuarioDAO {
 
     private static final String INSERT_USUARIO_SQL = "INSERT INTO \"Usuario\" ( \"Nombre\", \"TipoDocumento\", \"NumeroDocumento\", \"Genero\", \"GrupoSanguineo\", \"Correo\", \"Rol\") VALUES (?, ?, ?, ?, ?, ?, ?)";
     private static final String SELECT_USUARIO_SQL = "SELECT \"Nombre\", \"TipoDocumento\", \"NumeroDocumento\", \"Genero\", \"GrupoSanguineo\", \"Correo\", \"Rol\" FROM \"Usuario\"";
-    private static final String SELECT_NumDoc = "SELECT * FROM \"Usuario\" WHERE \"NumeroDocumento\" = ?";
 
     protected Connection getConnection() throws SQLException {
         Connection connection = null;

@@ -4,10 +4,10 @@
     Author     : SENA
 --%>
 
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ page import="java.util.List, java.util.ArrayList" %>
-<%@ page import="com.UniversidadNuevaGranada.Bean.Usuario" %>
-<%@ page import="com.UniversidadNuevaGranada.DAO.UsuarioDAO" %>
+<%@page contentType="text/html;charset=UTF-8" language="java" %>
+<%@page import= "java.util.List, java.util.ArrayList" %>
+<%@page import= "com.UniversidadNuevaGranada.Bean.Usuario" %>
+<%@page import= "com.UniversidadNuevaGranada.DAO.UsuarioDAO" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -86,7 +86,6 @@
             <button type="submit">Buscar</button>
         </form>
     </div>
-    
     <table>
         <tr>
             <th>Nombre</th>
@@ -128,6 +127,7 @@
             if(listaUsuarios != null && !listaUsuarios.isEmpty()){
                 for(Usuario usuario : listaUsuarios){
         %>
+        
         <tr>
             <td><%= usuario.getNombre() %></td>
             <td><%= usuario.getTipoDocumento() %></td>

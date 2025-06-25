@@ -7,9 +7,9 @@ import java.util.List;
 
 public class UsuarioDAO {
 
-    private String jdbcURL = "jdbc:postgresql://localhost:5432/Uni";
-    private String jdbcUsername = "postgres";
-    private String jdbcPassword = "123456789";
+    private final String jdbcURL = "jdbc:postgresql://localhost:5432/Uni";
+    private final String jdbcUsername = "postgres";
+    private final String jdbcPassword = "123456789";
 
     private static final String INSERT_USUARIO_SQL = "INSERT INTO \"Usuario\" ( \"Nombre\", \"TipoDocumento\", \"NumeroDocumento\", \"Genero\", \"GrupoSanguineo\", \"Correo\", \"Rol\") VALUES (?, ?, ?, ?, ?, ?, ?)";
     private static final String SELECT_USUARIO_SQL = "SELECT \"Nombre\", \"TipoDocumento\", \"NumeroDocumento\", \"Genero\", \"GrupoSanguineo\", \"Correo\", \"Rol\" FROM \"Usuario\"";
@@ -73,4 +73,65 @@ public class UsuarioDAO {
         return Lista;
     }
 
+    public boolean eliminarUsuario(String telefono) {
+        Connection con = null;
+        PreparedStatement pstmt = null;
+
+        try {
+
+            String query = "DELETE FROM \"Usuario\" WHERE \"NumeroDocumento\" = ?";
+
+            pstmt = con.prepareStatement(query);
+            pstmt.setString(1, telefono);
+
+            return pstmt.executeUpdate() > 0;
+
+        } catch (SQLException e) {
+            System.out.println("Error al eliminar usuario: " + e.getMessage());
+            return false;
+        } finally {
+            try {
+                if (pstmt != null) {
+                    pstmt.close();
+                }
+                if (con != null) {
+                    con.close();
+                }
+            } catch (SQLException ex) {
+                System.out.println("Error al cerrar conexión: " + ex.getMessage());
+            }
+        }
+    }
+
+    public boolean actualizarUsuario(Usuario usuario) {
+        Connection con = null;
+        PreparedStatement pstmt = null;
+
+        try {
+
+            String query = "UPDATE \"Usuario\" SET \"NombreUsuario\"=?, \"ApellidoUsuario\"=?, \"CorreoUsuario\"=?, \"DireccionUsuario\"=? WHERE \"TelefonoUsuario\" = ?";
+            pstmt = con.prepareStatement(query);
+            pstmt.setString(1, usuario.getNombreUsuario());
+            pstmt.setString(2, usuario.getApellidoUsuario());
+            pstmt.setString(3, usuario.getCorreoUsuario());
+            pstmt.setString(4, usuario.getDireccionUsuario());
+            pstmt.setString(5, usuario.getTelefonoUsuario());
+
+            return pstmt.executeUpdate() > 0;
+        } catch (Exception e) {
+            System.out.println("Error al actualizar usuario: " + e.getMessage());
+            return false;
+        } finally {
+            try {
+                if (pstmt != null) {
+                    pstmt.close();
+                }
+                if (con != null) {
+                    con.close();
+                }
+            } catch (Exception e) {
+                System.out.println("Error al cerrar conexión: " + e.getMessage());
+            }
+        }
+    }
 }

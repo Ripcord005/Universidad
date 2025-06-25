@@ -127,7 +127,6 @@
             if(listaUsuarios != null && !listaUsuarios.isEmpty()){
                 for(Usuario usuario : listaUsuarios){
         %>
-        
         <tr>
             <td><%= usuario.getNombre() %></td>
             <td><%= usuario.getTipoDocumento() %></td>
